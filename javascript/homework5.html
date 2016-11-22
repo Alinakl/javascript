@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function rand(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+var arr = [];
+var ARR_SIZE = 10;
+for (var i = 0; i < ARR_SIZE; i++) {
+	arr[i] = [];
+	for (var j = 0; j < ARR_SIZE; j++) {
+		// arr[i].push( rand(0, 199) );
+		arr[i][j] = rand(0, 99);
+	}
+}
+
+var border;
+border = {
+	top: arr[0].slice(),
+	right: [],
+	bottom: arr[arr.length - 1].slice().reverse(),
+	left: []
+};
+for (var i = 1; i < arr.length - 1; i++) {
+	border.left.push(arr[i][0]);
+
+	border.right.push(
+		arr[i][arr[i].length - 1]
+	);
+}
+border.left.reverse();
+
+var perimeter = border.top.concat(border.right, border.bottom, border.left);
+console.log(perimeter);
+</script>
+
+</body>
+</html>
